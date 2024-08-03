@@ -71,7 +71,7 @@ def convert_weight(value, from_unit, to_unit):
         'ounce': 0.0283495,
         'carrat': 2e-4
     }
-
+    return value * (weight_unit[from_unit] / weight_unit[to_unit])
 
 def convert_time(value, from_unit, to_unit):
     time_units = {
@@ -98,9 +98,9 @@ def convert():
     value = float(request.args.get('value'))
 
     match category:
-        case 'length':
+        case 'len':
             result = convert_length(value,unit_from,unit_to)
-        case 'temperate':
+        case 'temp':
             result = convert_temperature(value,unit_from,unit_to)
         case 'area':
             result = convert_area(value,unit_from,unit_to)
